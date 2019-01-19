@@ -1,4 +1,4 @@
-package data_structures;
+package advanced_ds;
 
 class Node
 {
