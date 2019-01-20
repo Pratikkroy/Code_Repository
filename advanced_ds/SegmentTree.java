@@ -7,7 +7,7 @@ public class SegmentTree {
 	public int st[];
 	public int lazy[];
 	public int size;
-	int MAX_SIZE;
+	public int MAX_SIZE;
 	
 	public void buildTree(int arr[],int size)
 	{
