@@ -2,11 +2,12 @@ package basic_ds;
 
 public class Stack {
 
+	public int MAX_SIZE;
 	private int top;
 	private int stack[];
-	private int MAX_SIZE;
 	
-	Stack(int max)
+	
+	public Stack(int max)
 	{
 		MAX_SIZE=max;
 		stack=new int[MAX_SIZE];
@@ -56,10 +57,15 @@ public class Stack {
 		return top==-1;
 	}
 	
+	public boolean isFull()
+	{
+		return (top+1)==MAX_SIZE;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Stack stack=new Stack(0);
+		Stack stack=new Stack(5);
 		
 		stack.push(10);
 		stack.push(20);
@@ -67,9 +73,11 @@ public class Stack {
 		stack.push(40);
 		stack.push(50);
 		
+		System.out.println(stack.isFull());
+		
 		while(!stack.isEmpty())
 		{
-			System.out.println(stack.pop());
+			System.out.println(stack.pop()+" "+stack.isFull());
 		}
 	}
 

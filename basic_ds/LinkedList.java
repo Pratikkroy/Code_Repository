@@ -2,22 +2,23 @@ package basic_ds;
 
 
 public class LinkedList {
-	class Node
+	
+	public class Node
 	{
-		int data;
-		Node next;
+		public int data;
+		public Node next;
 		
-		Node(int value)
+		public Node(int value)
 		{
 			data=value;
 			next=null;
 		}
 	}
 	
-	private Node head;
-	private Node tail;
+	public Node head;
+	public Node tail;
 	
-	LinkedList()
+	public LinkedList()
 	{
 		head=null;
 		tail=null;

@@ -3,8 +3,8 @@ package basic_ds;
 class MaxHeap
 {
 	private int arr[];
-	private int size;
-	private int MAX_SIZE;
+	public int size;
+	public int MAX_SIZE;
 	
 	public MaxHeap(int maxSize)
 	{

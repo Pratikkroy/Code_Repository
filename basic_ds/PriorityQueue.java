@@ -2,21 +2,21 @@ package basic_ds;
 
 public class PriorityQueue {
 
-	class Node
+	private class Node
 	{
-		int rank;
-		int index;
+		private int rank;
+		private int index;
 		
-		public Node(int i,int r)
+		Node(int i,int r)
 		{
 			index=i;
 			rank=r;
 		}
 	}
 	
-	public Node arr[];
+	private Node arr[];
 	public int size;
-	private int MAX_SIZE;
+	public int MAX_SIZE;
 	
 	public PriorityQueue(int maxSize) 
 	{

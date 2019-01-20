@@ -2,21 +2,21 @@ package basic_ds;
 
 public class BST {
 
-	class Node
+	public class Node
 	{
-		int data;
-		Node left,right;
+		public int data;
+		public Node left,right;
 		
-		Node(int value)
+		public Node(int value)
 		{
 			data=value;
 			left=right=null;
 		}
 	}
 	
-	private Node root;
+	public Node root;
 	
-	BST()
+	public BST()
 	{
 		root=null;
 	}

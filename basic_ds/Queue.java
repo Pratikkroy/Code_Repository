@@ -2,11 +2,11 @@ package basic_ds;
 
 public class Queue {
 
+	public int MAX_SIZE;
 	private int front,rear;
 	private int queue[];
-	private int MAX_SIZE;
 	
-	Queue(int size)
+	public Queue(int size)
 	{
 		MAX_SIZE=size;
 		queue=new int[MAX_SIZE];
@@ -61,6 +61,11 @@ public class Queue {
 		return front==-1;
 	}
 	
+	public boolean isFull()
+	{
+		return size()==MAX_SIZE;
+	}
+	
 	public int getFrontElement()
 	{
 		if(front==-1)
@@ -98,18 +103,16 @@ public class Queue {
 		q.enqueue(3);
 		q.enqueue(4);
 		
-		q.deque();
-		q.deque();
-		q.deque();
 		q.enqueue(5);
 		q.enqueue(6);
 		q.enqueue(7);
 		
-		q.deque();
-		q.deque();
-		q.deque();
-		q.deque();
-		q.deque();
+		System.out.println(q.isFull());
+		
+		while(!q.isEmpty())
+		{
+			System.out.println("Front --> "+q.deque()+" "+q.isFull());
+		}
 		
 		System.out.println("Front --> "+q.getFrontElement());
 		System.out.println("Rear --> "+q.getLastElement());

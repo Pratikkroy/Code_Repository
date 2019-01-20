@@ -2,24 +2,25 @@ package basic_ds;
 
 public class Tree {
 
-	class Node
+	public class Node
 	{
-		int data;
-		Node left,right;
+		public int data;
+		public Node left,right;
 		
-		Node(int value)
+		public Node(int value)
 		{
 			data=value;
 			left=right=null;
 		}
 	}
 	
-	private Node root;
+	public Node root;
 	
-	Tree()
+	public Tree()
 	{
 		root=null;
 	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
