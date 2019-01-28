@@ -8,15 +8,15 @@ public class LinkedList {
 		public int data;
 		public Node next;
 		
-		public Node(int value)
+		private Node(int value)
 		{
 			data=value;
 			next=null;
 		}
 	}
 	
-	public Node head;
-	public Node tail;
+	private Node head;
+	private Node tail;
 	
 	public LinkedList()
 	{

@@ -7,7 +7,7 @@ public class PriorityQueue {
 		private int rank;
 		private int index;
 		
-		Node(int i,int r)
+		private Node(int i,int r)
 		{
 			index=i;
 			rank=r;
