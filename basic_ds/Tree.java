@@ -81,7 +81,7 @@ public class Tree {
 	public int findHeightOfNode(Node node)
 	{
 		//return findHeightUtil(root);
-		return 0;
+		return findLevel(node)-1;
 	}
 	
 	public int findHeightOfTree()
@@ -145,14 +145,15 @@ public class Tree {
 		Tree tree=new Tree();
 		tree.addRoot(1);
 		tree.addNode(1, 2, "L");
-		tree.addNode(2, 3, "L");
+		tree.addNode(1, 3, "R");
 		tree.addNode(3, 4, "L");
-		tree.addNode(4, 5, "L");
+		tree.addNode(3, 5, "R");
 		tree.addNode(5, 6, "L");
 		
 		//tree.inorder();
 		
-		System.out.println(tree.findLevel(tree.find(3)));
+		System.out.println(tree.findHeightOfTree());
+		System.out.println(tree.findLevel(tree.find(6)));
 	}
 
 }
