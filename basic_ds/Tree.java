@@ -124,12 +124,22 @@ public class Tree {
 			
 	}
 	
+	public Node findMirror(Node node)
+	{
+		return null;
+	}
+	
+	private Node findMirrorUtil(Node node)
+	{
+		return null;
+	}
+	
 	public void inorder()
 	{
 		inorder(root);
 	}
 	
-	private void inorder(Node root)
+	public void inorder(Node root)
 	{
 		if(root==null)
 			return;
@@ -153,7 +163,7 @@ public class Tree {
 		//tree.inorder();
 		
 		System.out.println(tree.findHeightOfTree());
-		System.out.println(tree.findLevel(tree.find(6)));
+		System.out.println(tree.findHeightOfNode(tree.find(1)));
 	}
 
 }
