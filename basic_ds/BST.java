@@ -138,7 +138,15 @@ public class BST {
 		}
 		else
 		{
-			//succ=findSuccessor(node);
+			Node succ=findInorderSuccessor(node.data);
+			
+			int data=succ.data;
+			delete(succ);
+			
+			if(parent.left==node)
+				parent.left.data=data;
+			else
+				parent.right.data=data;
 		}
 	}
 	
@@ -279,10 +287,11 @@ public class BST {
 		
 		BST b=new BST();
 		b.insert(5);
+		b.insert(3);
 		b.insert(1);
 		b.insert(4);
 		b.insert(8);
-		b.insert(5);
+		b.insert(6);
 		b.insert(10);
 		b.insert(9);
 		
@@ -290,9 +299,11 @@ public class BST {
 		b.inorder(b.root);
 		System.out.println();
 		
+		b.delete(b.search(8));
 		
-		for(int i=1;i<=10;i++)
-			System.out.println(i+" --> "+b.findFloor(i).data);
+		b.inorder(b.root);
+		System.out.println();
+		
 	}
 
 }
