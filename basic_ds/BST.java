@@ -142,34 +142,125 @@ public class BST {
 		}
 	}
 	
-	public Node findInorderSuccessor(Node node)
+	public Node findInorderSuccessor(int data)
 	{
+		
+		Node ptr=root;
+		Node succ=null;
+		
+		while(ptr!=null)
+		{
+			if(data>ptr.data)
+				ptr=ptr.right;
+			else if(data<ptr.data)
+			{
+				succ=ptr;
+				ptr=ptr.left;
+			}
+			else if(data==ptr.data)
+			{
+				if(ptr.right!=null)
+				{
+					succ=ptr.right;
+					ptr=ptr.right;
+					
+					while(ptr!=null)
+					{
+						succ=ptr;
+						ptr=ptr.left;
+					}
+				}
+				
+				return succ;
+			}
+		}
 		
 		return null;
 		
 		
 	}
 	
-	public Node findInorderPredeccessor(Node node)
+	public Node findInorderPredeccessor(int data)
 	{
+		Node ptr=root;
+		Node pred=null;
+		
+		while(ptr!=null)
+		{
+			if(data>ptr.data)
+			{
+				pred=ptr;
+				ptr=ptr.right;
+			}
+			else if(data<ptr.data)
+				ptr=ptr.left;
+			else if(data==ptr.data)
+			{
+				if(ptr.left!=null)
+				{
+					pred=ptr.left;
+					ptr=ptr.left;
+					
+					while(ptr!=null)
+					{
+						pred=ptr;
+						ptr=ptr.right;
+					}
+				}
+				
+				return pred;
+			}
+		}
 		
 		return null;
 		
 	}
 	
-	public Node findCeil(Node node)
+	public Node findCeil(int data)
 	{
+		Node ptr=root;
+		Node ceil=null;
 		
-		return null;
+		while(ptr!=null)
+		{
+			if(data>ptr.data)
+				ptr=ptr.right;
+			else if(data<ptr.data)
+			{
+				ceil=ptr;
+				ptr=ptr.left;
+			}
+			else if(data==ptr.data)
+				return ptr;
+		}
+		
+		
+		return ceil;
 		
 		
 	}
 	
-	public Node findFloor(Node node)
+	public Node findFloor(int data)
 	{
 		
-		return null;
+		Node ptr=root;
+		Node floor=null;
 		
+		while(ptr!=null)
+		{
+			if(data>ptr.data)
+			{
+				floor=ptr;
+				ptr=ptr.right;
+			}
+			else if(data<ptr.data)
+				ptr=ptr.left;
+			else if(data==ptr.data)
+				return ptr;
+		}
+		
+		
+		return floor;
 		
 	}
 	
@@ -188,22 +279,20 @@ public class BST {
 		
 		BST b=new BST();
 		b.insert(5);
-		b.insert(3);
 		b.insert(1);
 		b.insert(4);
 		b.insert(8);
-		b.insert(6);
 		b.insert(5);
 		b.insert(10);
-		b.insert(12);
+		b.insert(9);
 		
 		
 		b.inorder(b.root);
 		System.out.println();
-		b.delete(b.search(10));
 		
-		b.inorder(b.root);
-		System.out.println();
+		
+		for(int i=1;i<=10;i++)
+			System.out.println(i+" --> "+b.findFloor(i).data);
 	}
 
 }
