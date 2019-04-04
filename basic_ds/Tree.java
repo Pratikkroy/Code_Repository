@@ -76,6 +76,31 @@ public class Tree {
 			return true;
 	}
 	
+	public Node findParent(int data)
+	{
+		if(root==null || root.data==data)
+			return null;
+		
+		return findParentUtil(root, data);
+	}
+	
+	private Node findParentUtil(Node root, int data)
+	{
+		if(root==null)
+			return null;
+		
+		if((root.left!=null && root.left.data==data)||(root.right!=null && root.right.data==data))
+			return root;
+		
+		Node lNode = findParentUtil(root.left, data);
+		
+		if(lNode!=null)
+			return lNode;
+		
+		return findParentUtil(root.right, data);
+			
+	}
+	
 	// height of node is the length of path (number of edges) from root to path.
 	// height of a tree is the maximum height of the nodes in a tree.
 	public int findHeightOfNode(Node node)
@@ -163,7 +188,8 @@ public class Tree {
 		//tree.inorder();
 		
 		System.out.println(tree.findHeightOfTree());
-		System.out.println(tree.findHeightOfNode(tree.find(1)));
+		//System.out.println(tree.findHeightOfNode(tree.find(1)));
+		System.out.println(tree.findParent(2).data);
 	}
 
 }
