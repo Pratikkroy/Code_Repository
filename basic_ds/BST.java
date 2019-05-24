@@ -272,6 +272,35 @@ public class BST {
 		
 	}
 	
+	public Node findLCA(Node node1, Node node2)
+	{
+		if(node1==null || node2==null)
+			return null;
+		
+		if(node1==node2)
+			return node1;
+		
+		Node max=node1.data>node2.data?node1:node2;
+		Node min=node1.data<node2.data?node1:node2;
+		
+		Node node=root;
+		
+		while(node!=null)
+		{
+			if(max.data==node.data || min.data==node.data)
+				return node;
+				
+			if(node.data>min.data && node.data<max.data)
+				return node;
+			else if(node.data>min.data && node.data>max.data)
+				node=node.left;
+			else if(node.data<min.data && node.data<max.data)
+				node=node.right;
+			
+		}
+		
+		return node;
+	}
 	public static void inorder(Node root)
 	{
 		if(root==null)
@@ -299,10 +328,12 @@ public class BST {
 		b.inorder(b.root);
 		System.out.println();
 		
-		b.delete(b.search(8));
+		System.out.println(b.findLCA(b.search(99), b.search(6)).data);
 		
 		b.inorder(b.root);
 		System.out.println();
+		
+		
 		
 	}
 
