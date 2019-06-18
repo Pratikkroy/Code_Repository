@@ -37,11 +37,12 @@ public class SieveOfErantosthenes {
 		int n=12;
 		
 		int prime[]=sieve(n);
+		Prime p =new Prime();
 		
 		for(int i=2;i<=n;i++)
 		{
 			if(prime[i]==0)
-				System.out.println(i+" "+Prime.isPrime(i));
+				System.out.println(i+" "+p.isPrime(i));
 		}
 	}
 
