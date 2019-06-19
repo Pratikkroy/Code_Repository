@@ -1,4 +1,4 @@
-package search;
+package searching;
 
 public class BinarySearch {
 
@@ -44,14 +44,13 @@ public class BinarySearch {
 		
 		int left=0,right=n;
 		int mid=0;
+		int ceil=-1;
 		
 		while(left<=right) {
 			mid=(left+right)/2;
 			
 			if(arr[mid]>target) {
-				if(mid==0 || arr[mid-1]<target)
-					return mid;
-				
+				ceil = mid;				
 				right=mid-1;
 			}
 			else if(arr[mid]<target) {				
@@ -61,13 +60,14 @@ public class BinarySearch {
 				return mid;
 		}
 		
-		return -1;
+		return ceil;
 	}
 	
 	public int floor(int arr[], int n, int target) {
 		
 		int left=0,right=n;
 		int mid=0;
+		int floor=-1;
 		
 		while(left<=right) {
 			mid=(left+right)/2;
@@ -76,16 +76,14 @@ public class BinarySearch {
 				right=mid-1;
 			}
 			else if(arr[mid]<target) {
-				if(mid==n || arr[mid+1]>target)
-					return mid;
-				
+				floor = mid;
 				left=mid+1;
 			}
 			else
 				return mid;
 		}
 		
-		return -1;
+		return floor;
 	}
 	
 	public static void main(String[] args) {
@@ -96,7 +94,7 @@ public class BinarySearch {
 		
 		BinarySearch b=new BinarySearch();
 		
-		int target=17;
+		int target=37;
 		
 		System.out.println(b.floor(arr, n, target));
 
