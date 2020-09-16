@@ -1,5 +1,8 @@
 package basic_ds;
 
+import exceptions.QueueOverFlowException;
+import exceptions.QueueUnderFlowException;
+
 public class Queue {
 
 	public int MAX_SIZE;
@@ -14,7 +17,7 @@ public class Queue {
 		front=rear=-1;
 	}
 	
-	public boolean enqueue(int value)
+	public boolean enqueue(int value) throws QueueOverFlowException
 	{
 		if(front==-1) // empty queue
 		{
@@ -27,12 +30,12 @@ public class Queue {
 		if(rear>=front)   // when rear==front ---> one element
 		{
 			if(rear-front+1==MAX_SIZE) //queue overflow
-				return false; 	
+				throw new QueueOverFlowException();	
 		}
 		else if(front>rear)
 		{
 			if(front-rear==1)   // queue overflow
-				return false;
+			throw new QueueOverFlowException();	
 		}
 		
 		rear=(rear+1)%MAX_SIZE;
@@ -41,10 +44,10 @@ public class Queue {
 		return true;
 	}
 
-	public int deque()
+	public int deque() throws QueueUnderFlowException
 	{
 		if(front==-1) //empty queue
-			return -1;
+			throw new QueueUnderFlowException();
 		
 		int result=queue[front];
 		
@@ -66,18 +69,18 @@ public class Queue {
 		return size()==MAX_SIZE;
 	}
 	
-	public int getFrontElement()
+	public int getFrontElement() throws QueueUnderFlowException
 	{
 		if(front==-1)
-			return -1;
+			throw new QueueUnderFlowException();
 		
 		return queue[front];
 	}
 	
-	public int getLastElement()
+	public int getLastElement() throws QueueUnderFlowException
 	{
 		if(front==-1)
-			return -1;
+			throw new QueueUnderFlowException();
 		
 		return queue[rear];
 	}
@@ -98,25 +101,42 @@ public class Queue {
 
 		Queue q=new Queue(5);
 		
-		q.enqueue(1);
-		q.enqueue(2);
-		q.enqueue(3);
-		q.enqueue(4);
+		try {
+			q.enqueue(1);
+			q.enqueue(2);
+			q.enqueue(3);
+			q.enqueue(4);
+			
+			q.enqueue(5);
+			q.enqueue(6);
+			q.enqueue(7);
+		} catch (Exception ex) {
+			System.out.println("Exception occured:: "+ex.getMessage());
+			ex.printStackTrace();
+		}
 		
-		q.enqueue(5);
-		q.enqueue(6);
-		q.enqueue(7);
 		
 		System.out.println(q.isFull());
 		
 		while(!q.isEmpty())
 		{
-			System.out.println("Front --> "+q.deque()+" "+q.isFull());
+			try {
+				System.out.println("Front --> "+q.deque()+" "+q.isFull());
+			} catch (Exception ex) {
+				System.out.println("Exception occured:: "+ex.getMessage());
+				ex.printStackTrace();
+			}
 		}
 		
-		System.out.println("Front --> "+q.getFrontElement());
-		System.out.println("Rear --> "+q.getLastElement());
-		System.out.println("size --> "+q.size());
+		try {
+			System.out.println("Front --> "+q.getFrontElement());
+			System.out.println("Rear --> "+q.getLastElement());
+			System.out.println("size --> "+q.size());
+		} catch (Exception ex) {
+			System.out.println("Exception occured:: "+ex.getMessage());
+			ex.printStackTrace();
+		}
+		
 	}
 
 }

@@ -1,5 +1,8 @@
 package basic_ds;
 
+import exceptions.StackOverFlowException;
+import exceptions.StackUnderFlowException;
+
 public class Stack {
 
 	public int MAX_SIZE;
@@ -15,10 +18,10 @@ public class Stack {
 		top=-1;
 	}
 	
-	public boolean push(int value)
+	public boolean push(int value) throws StackOverFlowException
 	{
 		if(top>MAX_SIZE-2)
-			return false;
+			throw new StackOverFlowException();
 		
 		top++;
 		stack[top]=value;
@@ -26,10 +29,10 @@ public class Stack {
 		return true;
 	}
 	
-	public int pop()
+	public int pop() throws StackUnderFlowException
 	{
 		if(top==-1)
-			return -1;
+			throw new StackUnderFlowException();
 		
 		int result=stack[top];
 		
@@ -63,21 +66,37 @@ public class Stack {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
-		Stack stack=new Stack(5);
+		Stack stack=new Stack(2);
 		
-		stack.push(10);
-		stack.push(20);
-		stack.push(30);
-		stack.push(40);
-		stack.push(50);
+		try {
+			stack.push(10);
+			stack.push(20);
+			stack.push(30);
+			stack.push(40);
+			stack.push(50);
+		} catch(Exception ex) {
+			System.out.println("Exception occured:: "+ex.getMessage());
+			ex.printStackTrace();
+		}
 		
 		System.out.println(stack.isFull());
 		
 		while(!stack.isEmpty())
 		{
-			System.out.println(stack.pop()+" "+stack.isFull());
+			try {
+				System.out.println(stack.pop()+" "+stack.isFull());	
+			} catch(Exception ex) {
+				System.out.println("Exception occured:: "+ex.getMessage());
+				ex.printStackTrace();
+			}
+		}
+
+		try {
+			System.out.println(stack.pop()+" "+stack.isFull());	
+		} catch(Exception ex) {
+			System.out.println("Exception occured:: "+ex.getMessage());
+			ex.printStackTrace();
 		}
 	}
 
